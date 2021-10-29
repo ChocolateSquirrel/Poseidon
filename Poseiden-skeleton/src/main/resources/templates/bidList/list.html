@@ -38,6 +38,17 @@
 			</thead>
 			<tbody>
 				<!-- TODO: Show all Bids to the table, the Action column will have Edit & Delete buttons -->
+				<tr th:if="${bidList.empty}">
+					<td>No bid</td>
+				</tr>
+				<tr th:each="bid : ${bidList}">
+					<th th:text="${bid.bidListId}"></th>
+					<th th:text="${bid.account}"></th>
+					<th th:text="${bid.type}"></th>
+					<th th:text="${bid.bidQuantity}"></th>
+					<th>Action</th>
+					<!-- TODO : faire les 2 boutons qui renvoient vers update et delete -->
+				</tr>
 			</tbody>
 		</table>
 	</div>
