@@ -1,11 +1,14 @@
 C:\Users\Marie\Git\Poseidon\Poseiden-skeleton\src\main\java\com\nnk\springboot\domain\Trade.java
+C:\Users\Marie\Git\Poseidon\Poseiden-skeleton\src\main\java\com\nnk\springboot\services\BidListService.java
 C:\Users\Marie\Git\Poseidon\Poseiden-skeleton\src\main\java\com\nnk\springboot\domain\CurvePoint.java
 C:\Users\Marie\Git\Poseidon\Poseiden-skeleton\src\main\java\com\nnk\springboot\controllers\CurveController.java
 C:\Users\Marie\Git\Poseidon\Poseiden-skeleton\src\main\java\com\nnk\springboot\domain\User.java
 C:\Users\Marie\Git\Poseidon\Poseiden-skeleton\src\main\java\com\nnk\springboot\repositories\RatingRepository.java
+C:\Users\Marie\Git\Poseidon\Poseiden-skeleton\src\main\java\com\nnk\springboot\services\CurvePointService.java
 C:\Users\Marie\Git\Poseidon\Poseiden-skeleton\src\main\java\com\nnk\springboot\controllers\BidListController.java
 C:\Users\Marie\Git\Poseidon\Poseiden-skeleton\src\main\java\com\nnk\springboot\controllers\UserController.java
 C:\Users\Marie\Git\Poseidon\Poseiden-skeleton\src\main\java\com\nnk\springboot\repositories\RuleNameRepository.java
+C:\Users\Marie\Git\Poseidon\Poseiden-skeleton\src\main\java\com\nnk\springboot\services\RatingService.java
 C:\Users\Marie\Git\Poseidon\Poseiden-skeleton\src\main\java\com\nnk\springboot\config\SpringSecurityConfig.java
 C:\Users\Marie\Git\Poseidon\Poseiden-skeleton\src\main\java\com\nnk\springboot\controllers\TradeController.java
 C:\Users\Marie\Git\Poseidon\Poseiden-skeleton\src\main\java\com\nnk\springboot\repositories\UserRepository.java
