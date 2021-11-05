@@ -42,6 +42,7 @@ public class BidList {
 	private String sourceListId;
 	private String side;
 
+
 	public BidList() {
 	}
 

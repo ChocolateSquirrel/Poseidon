@@ -31,7 +31,8 @@ public class CurveController {
     }
 
     @GetMapping("/curvePoint/add")
-    public String addBidForm(CurvePoint bid) {
+    public String addBidForm(CurvePoint curvePoint, Model model) {
+        model.addAttribute("curvePoint", curvePoint);
         return "curvePoint/add";
     }
 
@@ -41,6 +42,7 @@ public class CurveController {
         if (!result.hasErrors()){
             curvePointService.save(curvePoint);
             model.addAttribute("curvePointList",  curvePointService.findAll());
+            return "redirect:/curvePoint/list";
         }
         return "curvePoint/add";
     }
