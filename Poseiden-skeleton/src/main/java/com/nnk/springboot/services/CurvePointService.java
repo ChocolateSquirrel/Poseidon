@@ -25,7 +25,7 @@ public class CurvePointService {
     }
 
     public Optional<CurvePoint> findById(Integer id) {
-        return curvePointRepository.findByCurveId(id);
+        return curvePointRepository.findById(id);
     }
 
     public void update(CurvePoint curvePointToUpdate, CurvePoint curvePoint) {

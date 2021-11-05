@@ -38,6 +38,17 @@
 			</thead>
 			<tbody>
 			<!-- TODO: Show all Trade to the table, the Action column will have Edit & Delete buttons -->
+			<tr th:if="${tradeList.empty}">
+				<td>No trade</td>
+			</tr>
+			<tr th:each="trade : ${tradeList}">
+				<th th:text="${trade.tradeId}"></th>
+				<th th:text="${trade.account}"></th>
+				<th th:text="${trade.type}"></th>
+				<th th:text="${trade.buyQuantity}"></th>
+				<th>Action</th>
+				<!-- TODO : faire les 2 boutons qui renvoient vers update et delete -->
+			</tr>
 			</tbody>
 		</table>
 	</div>
