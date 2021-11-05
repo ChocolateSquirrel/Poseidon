@@ -45,15 +45,17 @@
 				<td>No RuleName</td>
 			</tr>
 			<tr th:each="rule : ${ruleList}">
-				<th th:text="${rule.id}"></th>
+				<th style="width: 10%" th:text="${rule.id}"></th>
 				<th th:text="${rule.name}"></th>
 				<th th:text="${rule.description}"></th>
 				<th th:text="${rule.json}"></th>
 				<th th:text="${rule.template}"></th>
 				<th th:text="${rule.sqlStr}"></th>
 				<th th:text="${rule.sqlPart}"></th>
-				<th>Action</th>
-				<!-- TODO : faire les 2 boutons qui renvoient vers update et delete -->
+				<td style="width: 15%" class="text-center">
+					<a th:href="@{/ruleName/update/{id}(id=${rule.id})}">Edit</a>&nbsp;|&nbsp;
+					<a th:href="@{/ruleName/delete/{id}(id=${rule.id})}">Delete</a>
+				</td>
 			</tr>
 			</tbody>
 		</table>

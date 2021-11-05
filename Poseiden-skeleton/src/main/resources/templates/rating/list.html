@@ -43,13 +43,15 @@
 				<td>No Rating</td>
 			</tr>
 			<tr th:each="rating : ${ratingList}">
-				<th th:text="${rating.id}"></th>
+				<th style="width: 10%" th:text="${rating.id}"></th>
 				<th th:text="${rating.moodysRating}"></th>
 				<th th:text="${rating.sandPRating}"></th>
 				<th th:text="${rating.fitchRating}"></th>
 				<th th:text="${rating.orderNumber}"></th>
-				<th>Action</th>
-				<!-- TODO : faire les 2 boutons qui renvoient vers update et delete -->
+				<td style="width: 15%" class="text-center">
+					<a th:href="@{/rating/update/{id}(id=${rating.id})}">Edit</a>&nbsp;|&nbsp;
+					<a th:href="@{/rating/delete/{id}(id=${rating.id})}">Delete</a>
+				</td>
 			</tr>
 			</tbody>
 		</table>

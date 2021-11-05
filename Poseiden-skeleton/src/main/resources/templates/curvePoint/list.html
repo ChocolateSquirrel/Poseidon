@@ -42,12 +42,14 @@
 				<td>No CurvePoint</td>
 			</tr>
 			<tr th:each="curvePoint : ${curvePointList}">
-				<th th:text="${curvePoint.id}"></th>
+				<th style="width: 10%" th:text="${curvePoint.id}"></th>
 				<th th:text="${curvePoint.curveId}"></th>
 				<th th:text="${curvePoint.term}"></th>
 				<th th:text="${curvePoint.value}"></th>
-				<th>Action</th>
-				<!-- TODO : faire les 2 boutons qui renvoient vers update et delete -->
+				<td style="width: 15%" class="text-center">
+					<a th:href="@{/curvePoint/update/{id}(id=${curvePoint.id})}">Edit</a>&nbsp;|&nbsp;
+					<a th:href="@{/curvePoint/delete/{id}(id=${curvePoint.id})}">Delete</a>
+				</td>
 			</tr>
 			</tbody>
 		</table>
