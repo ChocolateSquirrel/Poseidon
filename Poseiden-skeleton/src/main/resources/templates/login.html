@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>Home</title>
+  <link rel="stylesheet" href="../../css/bootstrap.min.css" >
+</head>
+<body>
+<h3> Login with Username and Password </h3>
+<p>
+<form name='f' th:action="@{/app/login}" method='POST'>
+  <div class="user">
+    <label for="user">User:</label>
+    <input type="text" name="username"
+           class="form-control" id="user" placeholder="username">
+  </div>
+  <div class="password">
+    <label for="inputPassword">Password:</label>
+    <input type="password" name="password"
+           class="form-control" id="inputPassword" placeholder="password">
+  </div>
+  <div class="login text-center">
+    <button type="submit" name="submit" class="btn btn-primary">Login</button>
+  </div>
+</form>
+</p>
+</body>
+</html>

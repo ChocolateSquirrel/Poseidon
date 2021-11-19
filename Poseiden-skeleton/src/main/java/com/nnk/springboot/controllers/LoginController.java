@@ -1,9 +1,15 @@
 package com.nnk.springboot.controllers;
 
+import com.nnk.springboot.commandobject.LogedForm;
 import com.nnk.springboot.repositories.UserRepository;
+import com.nnk.springboot.services.UserDetailsServiceImpl;
+import com.nnk.springboot.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 

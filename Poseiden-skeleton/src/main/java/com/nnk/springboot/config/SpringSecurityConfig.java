@@ -39,11 +39,15 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/**").permitAll()
-                //.anyRequest().authenticated()
+                .antMatchers("/").permitAll()
+                .antMatchers("/user/list").permitAll()
+                .antMatchers("/admin/home").hasRole("ADMIN")
+                .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login")
-                .defaultSuccessUrl("/", true)
+                .formLogin()
+                .loginPage("/app/login")
+                .defaultSuccessUrl("/bidList/list", true)
+                .failureUrl("/app/error")
                 .permitAll();
     }
 
