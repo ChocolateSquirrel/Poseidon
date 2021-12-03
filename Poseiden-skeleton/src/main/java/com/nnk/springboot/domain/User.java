@@ -3,11 +3,14 @@ package com.nnk.springboot.domain;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Getter
 @Setter
@@ -65,7 +68,10 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        List<GrantedAuthority> listAuthorities = new ArrayList<>();
+        GrantedAuthority authority = new SimpleGrantedAuthority(this.role);
+        listAuthorities.add(authority);
+        return listAuthorities;
     }
 
     public String getPassword() {

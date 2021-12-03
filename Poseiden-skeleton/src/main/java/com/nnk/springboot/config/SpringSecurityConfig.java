@@ -40,15 +40,33 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
+                .antMatchers("/css/**").permitAll()
                 .antMatchers("/user/list").permitAll()
-                .antMatchers("/admin/home").hasRole("ADMIN")
+                .antMatchers("/admin/home").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/app/login")
                 .defaultSuccessUrl("/bidList/list", true)
                 .failureUrl("/app/error")
+                .permitAll()
+                .and()
+                .oauth2Login()
+                .loginPage("/app/login")
+                .defaultSuccessUrl("/bidList/list", true)
+                .failureUrl("/app/error")
                 .permitAll();
+
+/*        http.authorizeRequests()
+                .antMatchers("/bidList/", "/rating/", "/ruleName/", "/trade/", "/curvePoint/").hasAnyAuthority("ADMIN", "USER")
+                .antMatchers("/user/").permitAll()
+                .and().formLogin()  //login configuration
+                .defaultSuccessUrl("/bidList/list")
+                .and().logout()    //logout configuration
+                .logoutUrl("/app-logout")
+                .logoutSuccessUrl("/")
+                .and().exceptionHandling() //exception handling configuration
+                .accessDeniedPage("/app/error");*/
     }
 
     @Bean

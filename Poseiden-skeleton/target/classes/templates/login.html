@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8"/>
   <title>Home</title>
-  <link rel="stylesheet" href="../../css/bootstrap.min.css" >
+  <link rel="stylesheet"type="text/css" href="../../css/bootstrap.min.css" >
 </head>
 <body>
 <h3> Login with Username and Password </h3>
@@ -25,5 +25,10 @@
   </div>
 </form>
 </p>
+<div>
+  <a th:href="@{/oauth2/authorization/github}"><button type="submit" name="submit" class="btn btn-primary">Connect with Github</button></a>
+</div>
+
+
 </body>
 </html>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Slf4j
 @Controller
@@ -24,9 +25,9 @@ public class BidListController {
     }
 
     @RequestMapping("/bidList/list")
-    public String home(Model model)
-    {
+    public String home(Model model, Principal user) {
         // TODO: call service find all bids to show to the view
+        model.addAttribute("connectedUser", PrincipalUtils.getUserName(user));
         log.info("Request : /bidList/list");
         model.addAttribute("bidList", bidListService.findAllBids());
         log.info("Response : ");
