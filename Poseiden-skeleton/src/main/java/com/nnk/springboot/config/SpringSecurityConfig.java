@@ -49,14 +49,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/app/login")
                 .defaultSuccessUrl("/bidList/list", true)
-                .failureUrl("/app/error")
                 .permitAll()
                 .and()
                 .oauth2Login()
                 .loginPage("/app/login")
                 .defaultSuccessUrl("/bidList/list", true)
-                .failureUrl("/app/error")
-                .permitAll();
+                .permitAll()
+                .and().exceptionHandling().accessDeniedPage("/app/error");
 
 /*        http.authorizeRequests()
                 .antMatchers("/bidList/", "/rating/", "/ruleName/", "/trade/", "/curvePoint/").hasAnyAuthority("ADMIN", "USER")
