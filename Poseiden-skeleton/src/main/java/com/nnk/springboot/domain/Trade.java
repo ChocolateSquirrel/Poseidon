@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.sql.Timestamp;
 
 @Getter
@@ -18,10 +19,19 @@ public class Trade {
 	
 	private String account;
 	private String type;
+
+	@Min(value = 0L, message="the value must be positive")
 	private Double buyQuantity;
+
+	@Min(value = 0L, message="the value must be positive")
 	private Double sellQuantity;
+
+	@Min(value = 0L, message="the value must be positive")
 	private Double buyPrice;
+
+	@Min(value = 0L, message="the value must be positive")
 	private Double sellPrice;
+
 	private String benchmark;
 	private Timestamp tradeDate;
 	private String security;

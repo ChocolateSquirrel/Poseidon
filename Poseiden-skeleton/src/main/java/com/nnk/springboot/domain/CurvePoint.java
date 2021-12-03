@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
@@ -19,9 +20,13 @@ public class CurvePoint {
 
 	@NotNull
 	private Integer curveId;
+
 	private Timestamp asOfDate;
 	private double term;
+
+	@Min(value = 0L, message="the value must be positive")
 	private Double value;
+
 	private Timestamp creationDate;
 
 

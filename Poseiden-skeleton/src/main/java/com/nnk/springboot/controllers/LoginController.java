@@ -21,11 +21,9 @@ import java.util.Map;
 @RequestMapping("app")
 public class LoginController {
 
-    private final OAuth2AuthorizedClientService authorizedClientService;
     private final UserRepository userRepository;
 
-    public LoginController(OAuth2AuthorizedClientService authorizedClientService, UserRepository userRepository) {
-        this.authorizedClientService = authorizedClientService;
+    public LoginController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 @Getter
 @Setter
@@ -18,6 +19,8 @@ public class Rating {
 	private String moodysRating;
 	private String sandPRating;
 	private String fitchRating;
+
+	@Min(value = 0L, message="the value must be positive")
 	private Integer orderNumber;
 
 	public Rating() {

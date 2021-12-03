@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 import java.sql.Timestamp;
@@ -22,10 +23,19 @@ public class BidList {
 	private String account;
 	@NotBlank
 	private String type;
+
+	@Min(value = 0L, message="the value must be positive")
 	private Double bidQuantity;
+
+	@Min(value = 0L, message="the value must be positive")
 	private Double askQuantity;
+
+	@Min(value = 0L, message="the value must be positive")
 	private Double bid;
+
+	@Min(value = 0L, message="the value must be positive")
 	private Double ask;
+
 	private String benchmark;
 	private Timestamp bidListDate;
 	private String commentary;

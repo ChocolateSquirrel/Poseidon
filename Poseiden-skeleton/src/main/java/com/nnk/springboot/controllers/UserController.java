@@ -2,6 +2,7 @@ package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.User;
 import com.nnk.springboot.repositories.UserRepository;
+import com.nnk.springboot.services.UserServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -41,6 +42,10 @@ public class UserController {
     public String validate(@Valid User user, BindingResult result, Model model) {
         log.info("Request POST : /user/validate");
         if (!result.hasErrors()) {
+            if (!UserServiceImpl.isValid(user.getPassword())){
+                log.error("Response : password is not correct, must have 8 characters...");
+                return "user/add";
+            }
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             user.setPassword(encoder.encode(user.getPassword()));
             userRepository.save(user);
@@ -71,6 +76,11 @@ public class UserController {
         log.info("Request POST : /user/update/{id}");
         if (result.hasErrors()) {
             log.error("Response : " + result.getErrorCount() + "errors");
+            return "user/update";
+        }
+
+        if (!UserServiceImpl.isValid(user.getPassword())){
+            log.error("Response : password is not correct, must have 8 characters...");
             return "user/update";
         }
 
