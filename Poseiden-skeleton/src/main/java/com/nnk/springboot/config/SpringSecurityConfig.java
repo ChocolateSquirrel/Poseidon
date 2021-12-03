@@ -40,9 +40,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
+                .antMatchers("/user/**").permitAll()
                 .antMatchers("/css/**").permitAll()
-                .antMatchers("/user/list").permitAll()
-                .antMatchers("/admin/home").hasAuthority("ADMIN")
+                .antMatchers("/bidList/", "/curvePoint/", "/rating/", "/ruleName/", "/trade/").hasAuthority("USER")
+                .antMatchers("/bidList/", "/curvePoint/", "/rating/", "/ruleName/", "/trade/", "/admin/home").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
