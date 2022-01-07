@@ -28,6 +28,7 @@ public class TradeController {
     public String home(Model model, Principal user) {
         log.info("Request : /trade/list");
         model.addAttribute("connectedUser", PrincipalUtils.getUserName(user));
+        model.addAttribute("isAdmin", PrincipalUtils.isAdmin(user));
         model.addAttribute("tradeList", tradeService.findAll());
         log.info("Response for /trade/list : there are " + tradeService.findAll().size() + " trades");
         return "trade/list";

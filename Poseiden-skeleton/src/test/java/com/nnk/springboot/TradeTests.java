@@ -2,6 +2,7 @@ package com.nnk.springboot;
 
 import com.nnk.springboot.domain.Trade;
 import com.nnk.springboot.repositories.TradeRepository;
+import com.nnk.springboot.services.TradeService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,30 +19,31 @@ import java.util.Optional;
 public class TradeTests {
 
 	@Autowired
-	private TradeRepository tradeRepository;
+	private TradeService tradeService;
 
 	@Test
 	public void tradeTest() {
 		Trade trade = new Trade("Trade Account", "Type");
 
 		// Save
-		trade = tradeRepository.save(trade);
+		tradeService.save(trade);
         Assertions.assertNotNull(trade.getTradeId());
         Assertions.assertTrue(trade.getAccount().equals("Trade Account"));
 
 		// Update
-		trade.setAccount("Trade Account Update");
-		trade = tradeRepository.save(trade);
+		Trade tradeNew = new Trade("Trade Account", "Type");
+		tradeNew.setAccount("Trade Account Update");
+		tradeService.update(trade, tradeNew);
         Assertions.assertTrue(trade.getAccount().equals("Trade Account Update"));
 
 		// Find
-		List<Trade> listResult = tradeRepository.findAll();
+		List<Trade> listResult = tradeService.findAll();
         Assertions.assertTrue(listResult.size() > 0);
 
 		// Delete
 		Integer id = trade.getTradeId();
-		tradeRepository.delete(trade);
-		Optional<Trade> tradeList = tradeRepository.findById(id);
+		tradeService.delete(trade);
+		Optional<Trade> tradeList = tradeService.findById(id);
         Assertions.assertFalse(tradeList.isPresent());
 	}
 }

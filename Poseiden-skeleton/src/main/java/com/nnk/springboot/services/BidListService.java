@@ -4,6 +4,7 @@ import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.repositories.BidListRepository;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,6 +29,7 @@ public class BidListService {
         return bidListRepository.findByBidListId(id);
     }
 
+    @Transactional
     public void update(BidList bidToUpdate, BidList bid){
         bidToUpdate.setAccount(bid.getAccount());
         bidToUpdate.setType(bid.getType());

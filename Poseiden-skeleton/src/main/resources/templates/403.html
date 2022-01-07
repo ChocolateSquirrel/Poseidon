@@ -2,11 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
       <title>Spring Boot</title>
+    <link rel="stylesheet"type="text/css" href="../css/bootstrap.min.css" >
 </head>
 <body>
    <h3>Access Denied Exception</h3>
    <div>
-	    Logged in user: <b th:inline="text"  class="user"> [[${#httpServletRequest.remoteUser}]] </b>
+	    Logged in user:
+       <b th:inline="text"  class="user">
+           <span th:text="${connectedUser}"></span>
+        </b>
 	    <form th:action="@{/app/logout}" method="POST">
 	         <input type="submit" value="Logout"/>
 	    </form>

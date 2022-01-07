@@ -17,6 +17,9 @@
 			<a href="/ruleName/list">Rule</a>
 		</div>
 		<div class="col-6 text-right">
+			<span th:if="${isAdmin}">
+				<a href="/user/list">User Management</a> |
+			</span>
 			Logged in user:
 			<b th:inline="text"  class="user">
 				<span th:text="${connectedUser}"></span>

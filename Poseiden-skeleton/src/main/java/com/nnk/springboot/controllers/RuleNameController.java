@@ -29,6 +29,7 @@ public class RuleNameController {
     public String home(Model model, Principal user) {
         log.info("Request : /ruleName/list");
         model.addAttribute("connectedUser", PrincipalUtils.getUserName(user));
+        model.addAttribute("isAdmin", PrincipalUtils.isAdmin(user));
         model.addAttribute("ruleList", ruleNameService.findAll());
         log.info("Response for /ruleName/list : there are " + ruleNameService.findAll().size() + " ruleNames");
         return "ruleName/list";

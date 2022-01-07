@@ -2,6 +2,7 @@ package com.nnk.springboot;
 
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.repositories.BidListRepository;
+import com.nnk.springboot.services.BidListService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,30 +18,31 @@ import java.util.Optional;
 public class BidTests {
 
 	@Autowired
-	private BidListRepository bidListRepository;
+	private BidListService bidListService;
 
 	@Test
 	public void bidListTest() {
 		BidList bid = new BidList("Account Test", "Type Test", 10d);
 
 		// Save
-		bid = bidListRepository.save(bid);
+		bidListService.save(bid);
 		Assertions.assertNotNull(bid.getBidListId());
 		Assertions.assertEquals(bid.getBidQuantity(), 10d, 10d);
 
 		// Update
-		bid.setBidQuantity(20d);
-		bid = bidListRepository.save(bid);
+		BidList bidNew = new BidList("Account Test", "Type Test", 10d);
+		bidNew.setBidQuantity(20d);
+		bidListService.update(bid, bidNew);
 		Assertions.assertEquals(bid.getBidQuantity(), 20d, 20d);
 
 		// Find
-		List<BidList> listResult = bidListRepository.findAll();
+		List<BidList> listResult = bidListService.findAllBids();
 		Assertions.assertTrue(listResult.size() > 0);
 
 		// Delete
 		Integer id = bid.getBidListId();
-		bidListRepository.delete(bid);
-		Optional<BidList> bidList = bidListRepository.findById(id);
+		bidListService.delete(bid);
+		Optional<BidList> bidList = bidListService.findById(id);
 		Assertions.assertFalse(bidList.isPresent());
 	}
 }

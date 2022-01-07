@@ -28,6 +28,7 @@ public class RatingController {
     public String home(Model model, Principal user) {
         log.info("Request : /rating/list");
         model.addAttribute("connectedUser", PrincipalUtils.getUserName(user));
+        model.addAttribute("isAdmin", PrincipalUtils.isAdmin(user));
         model.addAttribute("ratingList", ratingService.findAll());
         log.info("Response for /rating/list : there are " + ratingService.findAll().size() + " ratings");
         return "rating/list";

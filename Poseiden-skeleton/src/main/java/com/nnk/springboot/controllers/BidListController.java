@@ -28,6 +28,7 @@ public class BidListController {
     public String home(Model model, Principal user) {
         log.info("Request : /bidList/list");
         model.addAttribute("connectedUser", PrincipalUtils.getUserName(user));
+        model.addAttribute("isAdmin", PrincipalUtils.isAdmin(user));
         model.addAttribute("bidList", bidListService.findAllBids());
         log.info("Response for /bidList/list : there are " + bidListService.findAllBids().size() + " bidLists");
         return "bidList/list";

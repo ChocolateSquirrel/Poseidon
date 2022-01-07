@@ -29,6 +29,7 @@ public class CurveController {
     public String home(Model model, Principal user) {
         log.info("Request : /curvePoint/list");
         model.addAttribute("connectedUser", PrincipalUtils.getUserName(user));
+        model.addAttribute("isAdmin", PrincipalUtils.isAdmin(user));
         model.addAttribute("curvePointList", curvePointService.findAll());
         log.info("Response for : there are " + curvePointService.findAll().size() + " curvePoints");
         return "curvePoint/list";
