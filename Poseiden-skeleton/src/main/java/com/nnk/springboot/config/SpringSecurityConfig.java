@@ -2,6 +2,7 @@ package com.nnk.springboot.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -42,8 +43,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/user/**").hasAuthority("ADMIN")
-                .antMatchers("/bidList/", "/curvePoint/", "/rating/", "/ruleName/", "/trade/").hasAuthority("USER")
-                .antMatchers("/bidList/", "/curvePoint/", "/rating/", "/ruleName/", "/trade/", "/admin/home").hasAuthority("ADMIN")
+                .antMatchers("/bidList/**", "/curvePoint/**", "/rating/**", "/ruleName/**", "/trade/**").authenticated()
+                .antMatchers( "/admin/home").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
